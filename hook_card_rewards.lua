@@ -30,4 +30,5 @@ function card_reward_hooks.on_card_reward()
     print("Patched card reward!")
 end
 
+
 return card_reward_hooks
