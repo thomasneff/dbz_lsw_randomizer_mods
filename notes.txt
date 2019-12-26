@@ -1,0 +1,23 @@
+0x0DDF: card 1 in deck
+0x0DF0: first card in packs (3 phase attack) (number total)
+0x0041: number of cards in deck
+
+0x0C4D seems to toggle goku off?
+0x0C1D success! character data -> 16 bytes, first byte toggles availability 
+
+character data offsets:
+0x02: EXP (1 byte)
+
+
+-- how to do character unlocks:
+-- battle mode: simply clear all character data and randomly generate N chars
+-- story mode: 
+--    start with a random char / every time a char is unlocked (keep track upon start of script?)
+--    we simply check if a value goes from 00 to something (other than us writing there! -> just use polling since events apparently don't work anyways) and mark that as unlocked
+--    when we get the event, we simply clear the unlocked char (so we need to loop over all chars and check if a value is changed)
+--    we need to keep all characters in memory at all times and do a full refresh every time something changes (store a was-unlocked in addition to the 16 bytes for every char)
+--    could use file-IO to store chars maybe, but not essential
+
+
+-- structure: main_story, main_battle
+--            the event logic (patching card drops, character unlocks) is factored out and called from within the respective mains
